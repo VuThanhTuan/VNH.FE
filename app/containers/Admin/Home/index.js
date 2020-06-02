@@ -1,34 +1,34 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core
-import { makeStyles } from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
+import { makeStyles } from '@material-ui/core/styles';
+import Icon from '@material-ui/core/Icon';
 // @material-ui/icons
-import Store from "@material-ui/icons/Store";
-import Warning from "@material-ui/icons/Warning";
-import DateRange from "@material-ui/icons/DateRange";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import Update from "@material-ui/icons/Update";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import AccessTime from "@material-ui/icons/AccessTime";
-import Accessibility from "@material-ui/icons/Accessibility";
-import BugReport from "@material-ui/icons/BugReport";
-import Code from "@material-ui/icons/Code";
-import Cloud from "@material-ui/icons/Cloud";
+import Store from '@material-ui/icons/Store';
+import Warning from '@material-ui/icons/Warning';
+import DateRange from '@material-ui/icons/DateRange';
+import LocalOffer from '@material-ui/icons/LocalOffer';
+import Update from '@material-ui/icons/Update';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
+import AccessTime from '@material-ui/icons/AccessTime';
+import Accessibility from '@material-ui/icons/Accessibility';
+import BugReport from '@material-ui/icons/BugReport';
+import Code from '@material-ui/icons/Code';
+import Cloud from '@material-ui/icons/Cloud';
 // core components
-import GridItem from "../../../components/Admin/Grid/GridItem.js";
-import GridContainer from "../../../components/Admin/Grid/GridContainer.js";
-import Table from "../../../components/Admin/Table/Table.js";
-import Tasks from "../../../components/Admin/Tasks/Tasks.js";
-import CustomTabs from "../../../components/Admin/CustomTabs/CustomTabs.js";
-import Danger from "../../../components/Admin/Typography/Danger.js";
-import Card from "../../../components/Admin/Card/Card";
-import CardHeader from "../../../components/Admin/Card/CardHeader.js";
-import CardIcon from "../../../components/Admin/Card/CardIcon.js";
-import CardBody from "../../../components/Admin/Card/CardBody.js";
-import CardFooter from "../../../components/Admin/Card/CardFooter.js";
+import GridItem from '../../../components/Admin/Grid/GridItem.js';
+import GridContainer from '../../../components/Admin/Grid/GridContainer.js';
+import Table from '../../../components/Admin/Table/Table.js';
+import Tasks from '../../../components/Admin/Tasks/Tasks.js';
+import CustomTabs from '../../../components/Admin/CustomTabs/CustomTabs.js';
+import Danger from '../../../components/Admin/Typography/Danger.js';
+import Card from '../../../components/Admin/Card/Card';
+import CardHeader from '../../../components/Admin/Card/CardHeader.js';
+import CardIcon from '../../../components/Admin/Card/CardIcon.js';
+import CardBody from '../../../components/Admin/Card/CardBody.js';
+import CardFooter from '../../../components/Admin/Card/CardFooter.js';
 
-import { bugs, website, server } from "./variables/general";
-import styles from "../../../assets/admin/jss/material-dashboard-react/views/dashboardStyle.js";
+import { bugs, website, server } from './variables/general';
+import styles from '../../../assets/admin/jss/material-dashboard-react/views/dashboardStyle.js';
 
 const useStyles = makeStyles(styles);
 
@@ -115,14 +115,13 @@ export default function HomePage() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
-            <CardHeader color="success">
-            </CardHeader>
+            <CardHeader color="success" />
             <CardBody>
               <h4 className={classes.cardTitle}>Daily Sales</h4>
               <p className={classes.cardCategory}>
                 <span className={classes.successText}>
                   <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                </span>{" "}
+                </span>{' '}
                 increase in today sales.
               </p>
             </CardBody>
@@ -135,8 +134,7 @@ export default function HomePage() {
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
-            <CardHeader color="warning">
-            </CardHeader>
+            <CardHeader color="warning" />
             <CardBody>
               <h4 className={classes.cardTitle}>Email Subscriptions</h4>
               <p className={classes.cardCategory}>Last Campaign Performance</p>
@@ -150,8 +148,7 @@ export default function HomePage() {
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
-            <CardHeader color="danger">
-            </CardHeader>
+            <CardHeader color="danger" />
             <CardBody>
               <h4 className={classes.cardTitle}>Completed Tasks</h4>
               <p className={classes.cardCategory}>Last Campaign Performance</p>
@@ -171,7 +168,7 @@ export default function HomePage() {
             headerColor="primary"
             tabs={[
               {
-                tabName: "Bugs",
+                tabName: 'Bugs',
                 tabIcon: BugReport,
                 tabContent: (
                   <Tasks
@@ -179,10 +176,10 @@ export default function HomePage() {
                     tasksIndexes={[0, 1, 2, 3]}
                     tasks={bugs}
                   />
-                )
+                ),
               },
               {
-                tabName: "Website",
+                tabName: 'Website',
                 tabIcon: Code,
                 tabContent: (
                   <Tasks
@@ -190,10 +187,10 @@ export default function HomePage() {
                     tasksIndexes={[0, 1]}
                     tasks={website}
                   />
-                )
+                ),
               },
               {
-                tabName: "Server",
+                tabName: 'Server',
                 tabIcon: Cloud,
                 tabContent: (
                   <Tasks
@@ -201,8 +198,8 @@ export default function HomePage() {
                     tasksIndexes={[0, 1, 2]}
                     tasks={server}
                   />
-                )
-              }
+                ),
+              },
             ]}
           />
         </GridItem>
@@ -217,12 +214,12 @@ export default function HomePage() {
             <CardBody>
               <Table
                 tableHeaderColor="warning"
-                tableHead={["ID", "Name", "Salary", "Country"]}
+                tableHead={['ID', 'Name', 'Salary', 'Country']}
                 tableData={[
-                  ["1", "Dakota Rice", "$36,738", "Niger"],
-                  ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                  ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                  ["4", "Philip Chaney", "$38,735", "Korea, South"]
+                  ['1', 'Dakota Rice', '$36,738', 'Niger'],
+                  ['2', 'Minerva Hooper', '$23,789', 'Curaçao'],
+                  ['3', 'Sage Rodriguez', '$56,142', 'Netherlands'],
+                  ['4', 'Philip Chaney', '$38,735', 'Korea, South'],
                 ]}
               />
             </CardBody>

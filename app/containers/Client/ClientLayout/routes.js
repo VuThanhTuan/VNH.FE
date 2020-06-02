@@ -1,10 +1,9 @@
-import HomePage from "../Home";
-
+import HomePage from '../Home';
 
 const clientRoutes = [
   {
-    path: "trang-chu",
-    name: "Dashboard",
+    path: 'trang-chu',
+    name: 'Dashboard',
     component: HomePage,
   },
 ];
