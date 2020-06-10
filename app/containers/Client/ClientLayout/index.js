@@ -20,7 +20,6 @@ function ClientLayout() {
       <div>
         <Switch>
           <Route path="/" component={HomePage} />
-          {/* <Route path="/bai-viet" component={BaiViet} /> */}
         </Switch>
       </div>
 
