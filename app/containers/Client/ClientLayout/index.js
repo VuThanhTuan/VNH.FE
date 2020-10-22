@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import clientRoutes from './routes';
 import HomePage from '../Home';
+import SideBar from '../SideBar/Sidebar';
 
 const switchRoutes = (
   <Switch>
@@ -16,7 +17,7 @@ function ClientLayout() {
   return (
     <div>
       {/* Side Bar */}
-
+      <SideBar />
       <div>
         <Switch>
           <Route path="/" component={HomePage} />
