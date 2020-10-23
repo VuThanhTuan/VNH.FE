@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import './signin-signup.css';
 import SignIn from './SignIn';
+import Signup from './Signup';
 
 function a11yProps(index) {
   return {
@@ -79,7 +80,7 @@ function SignInSignUp(props) {
             <SignIn />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            Item Two
+            <Signup />
           </TabPanel>
         </SwipeableViews>
       </div>
