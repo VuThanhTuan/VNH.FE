@@ -4,23 +4,33 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import LockIcon from '@material-ui/icons/Lock';
 import Button from '@material-ui/core/Button';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import './index.css';
-import { useFormik, Formik, Form, Field } from 'formik';
+import { Formik, Form, Field } from 'formik';
+import { makeStyles } from '@material-ui/core/styles';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import Input from 'components/Form/Input';
 import { login } from './action';
-import loginReducer from './reducer';
+import appReducer from '../../../App/reducer';
 import sagaWatcher from './saga';
-import * as selector from './selectors';
+import * as selector from '../../../App/selectors';
 import injectSaga from '../../../../utils/injectSaga';
+import { SignInValidation } from './validation';
+import appTheme from '../../../App/appTheme';
+
+const useStyles = makeStyles({
+  errorMessage: {
+    color: appTheme.palette.color2,
+  },
+});
 
 function SignIn(props) {
-  const { loginForm, isLoggedIn, loginFunc } = props;
+  const { loginErrorMessage, loginFunc } = props;
+  const classes = useStyles();
   const makeFormAttr = pr => ({
     userName: {
       name: 'userName',
@@ -29,6 +39,7 @@ function SignIn(props) {
       component: Input,
       value: pr.values.userName,
       onChange: pr.handleChange,
+      error: pr.errors.userName,
       startAdornment: (
         <InputAdornment position="start">
           <AccountCircle />
@@ -42,6 +53,7 @@ function SignIn(props) {
       component: Input,
       value: pr.values.password,
       onChange: pr.handleChange,
+      error: pr.errors.password,
       startAdornment: (
         <InputAdornment position="start">
           <LockIcon />
@@ -53,14 +65,15 @@ function SignIn(props) {
   return (
     <Formik
       initialValues={{
-        userName: loginForm.username,
-        password: loginForm.password,
+        userName: 'admin',
+        password: 'Admin@123',
       }}
-      onSubmit={async values => {
+      onSubmit={values => {
         // await new Promise(r => setTimeout(r, 500));
         // alert(JSON.stringify(values, null, 2));
         loginFunc(values);
       }}
+      validationSchema={SignInValidation}
     >
       {pr => {
         const formAttr = makeFormAttr(pr);
@@ -73,6 +86,13 @@ function SignIn(props) {
               <Grid item xs={12}>
                 <Field {...formAttr.password} />
               </Grid>
+              {loginErrorMessage ? (
+                <Grid item xs={12}>
+                  <div className={classes.errorMessage}>
+                    {loginErrorMessage}
+                  </div>
+                </Grid>
+              ) : null}
               <Grid className="footer">
                 <Button variant="contained" color="primary" type="submit">
                   Đăng Nhập
@@ -88,13 +108,12 @@ function SignIn(props) {
 
 SignIn.propTypes = {
   loginFunc: PropTypes.func,
-  loginForm: PropTypes.object,
   isLoggedIn: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
-  loginForm: selector.loginForm(),
-  isLoggedIn: selector.isLogged(),
+  isLoggedIn: selector.isLoggedIn(),
+  loginErrorMessage: selector.loginErrorMessage(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -108,7 +127,7 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'loginState', reducer: loginReducer });
+const withReducer = injectReducer({ key: 'global', reducer: appReducer });
 const withSaga = injectSaga({ key: 'loginState', saga: sagaWatcher });
 
 export default compose(

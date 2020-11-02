@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { loginInitState } from './reducer';
 
-const selectLogin = state => state.loginState || loginInitState;
+const selectLogin = state => state.loginState;
 
 export const loginForm = () =>
   createSelector(

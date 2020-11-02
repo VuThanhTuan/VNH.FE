@@ -39,6 +39,18 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
+const isLoggedIn = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.isLoggedIn,
+  );
+
+const loginErrorMessage = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.loginErrorMessage,
+  );
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -46,4 +58,6 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocation,
+  isLoggedIn,
+  loginErrorMessage,
 };

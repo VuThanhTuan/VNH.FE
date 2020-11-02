@@ -7,11 +7,11 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // core components
-import Navbar from '../../../components/Admin/Navbars/Navbar.js';
-import Footer from '../../../components/Admin/Footer/Footer.js';
+import Navbar from '../../../components/Admin/Navbars/Navbar';
+import Footer from '../../../components/Admin/Footer/Footer';
 import Sidebar from '../Sidebar/Sidebar';
 import routes from './routes';
-import styles from '../../../assets/admin/jss/material-dashboard-react/layouts/adminStyle.js';
+import styles from '../../../assets/admin/jss/material-dashboard-react/layouts/adminStyle';
 import bgImage from '../../../assets/admin/img/sidebar-2.jpg';
 import logo from '../../../assets/admin/img/reactlogo.png';
 

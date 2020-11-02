@@ -1,4 +1,5 @@
 import { all, call, put, takeLeading } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 import * as actions from './action';
 import * as constants from './constants';
 import request, { createRequest } from '../../../../utils/request';
@@ -14,8 +15,12 @@ function* loginSaga(action) {
 
   const options = createRequest('POST', body);
   const login = yield call(request, APIs.login, options);
-
-  yield put(actions.loginResponse(login));
+  if (login.statusCode === 400) {
+    yield put(actions.loginFailed(login.message));
+  } else {
+    yield put(actions.loginSuccess(login));
+    yield put(push('/admin'));
+  }
 }
 
 export default function* sagaWatcher() {

@@ -9,6 +9,11 @@
 
 import produce from 'immer';
 import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+} from '../Client/SignIn-SignUp/SignIn/constants';
+import { localStorageUtil } from '../../utils/localStorage';
 
 // The initial state of the App
 export const initialState = {
@@ -18,6 +23,10 @@ export const initialState = {
   userData: {
     repositories: false,
   },
+  isLoggedIn: localStorageUtil.getAuthInfo()
+    ? localStorageUtil.getAuthInfo().isLoggedIn.isLoggedIn
+    : null,
+  loginErrorMessage: null,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -39,6 +48,19 @@ const appReducer = (state = initialState, action) =>
       case LOAD_REPOS_ERROR:
         draft.error = action.error;
         draft.loading = false;
+        break;
+
+      case LOGIN_SUCCESS:
+        draft.isLoggedIn = true;
+        // eslint-disable-next-line no-case-declarations
+        const loginInfo = {
+          ...action.payload,
+          isLoggedIn: true,
+        };
+        localStorageUtil.saveLoginInfo(loginInfo);
+        break;
+      case LOGIN_FAIL:
+        draft.loginErrorMessage = action.message;
         break;
     }
   });

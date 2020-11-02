@@ -1,12 +1,11 @@
 /* eslint-disable no-param-reassign */
-// import produce from 'immer';
 import produce from 'immer';
 import { LOGIN_SUCCESS } from './constants';
 
 export const loginInitState = {
   form: {
     username: 'admin',
-    password: '',
+    password: 'Admin@123',
   },
   isLoggedIn: false,
 };
